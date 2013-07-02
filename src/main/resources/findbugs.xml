@@ -1,0 +1,10 @@
+<FindbugsPlugin xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="findbugsplugin.xsd" 
+        pluginid="com.tom_e_white"
+        provider="Hadoop Compatibility Detector" 
+        website="http://findbugs.sourceforge.net">
+
+        <Detector class="com.tom_e_white.Detector" reports="HADOOP_COMPATIBILITY_BUG" />
+        <BugPattern type="HADOOP_COMPATIBILITY_BUG" abbrev="HCB" category="CORRECTNESS"/>
+
+</FindbugsPlugin>

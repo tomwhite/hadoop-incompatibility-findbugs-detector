@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MessageCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="messagecollection.xsd">
+
+        <Plugin>
+                <ShortDescription>FindBugs Plugin Tutorial Plugin</ShortDescription>
+                <Details>Provides detectors as part of the FindBugs detector plugin
+                        tutorial.</Details>
+        </Plugin>
+
+        <Detector class="com.tom_e_white.Detector">
+                <Details>
+                        Finds instances of BigDecimals being created
+                        with doubles.
+                </Details>
+
+        </Detector>
+
+        <BugPattern type="HADOOP_COMPATIBILITY_BUG">
+                <ShortDescription>Hadoop bug</ShortDescription>
+                <LongDescription>Hadoop bug</LongDescription>
+                <Details>
+<![CDATA[
+<p>Due to the way double-precision floating point values are represented in Java, creating a new BigDecimal from a double is unreliable and may produce surprising results.</p>
+]]>
+                </Details>
+        </BugPattern>
+
+        <BugCode abbrev="HCB">Hadoop</BugCode>
+</MessageCollection>
