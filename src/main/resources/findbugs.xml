@@ -1,10 +1,11 @@
 <FindbugsPlugin xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="findbugsplugin.xsd" 
-        pluginid="com.tom_e_white"
-        provider="Hadoop Compatibility Detector" 
+        pluginid="com.tom_e_white.hadoop_incompatibility_findbugs_detector"
+        provider="Hadoop incompatibility detector"
         website="http://findbugs.sourceforge.net">
 
-        <Detector class="com.tom_e_white.Detector" reports="HADOOP_COMPATIBILITY_BUG" />
-        <BugPattern type="HADOOP_COMPATIBILITY_BUG" abbrev="HCB" category="CORRECTNESS"/>
+        <Detector class="com.tom_e_white.hadoop_incompatibility_findbugs_detector.FindHadoopIncompatibleClassChange" reports="HADOOP_CLASS_CHANGE_INCOMPATIBILITY_BUG" />
+        <BugPattern type="HADOOP_CLASS_CHANGE_INCOMPATIBILITY_BUG" abbrev="HIB"
+                    category="CORRECTNESS"/>
 
 </FindbugsPlugin>

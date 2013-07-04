@@ -1,30 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <MessageCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:noNamespaceSchemaLocation="messagecollection.xsd">
+                   xsi:noNamespaceSchemaLocation="messagecollection.xsd">
 
-        <Plugin>
-                <ShortDescription>FindBugs Plugin Tutorial Plugin</ShortDescription>
-                <Details>Provides detectors as part of the FindBugs detector plugin
-                        tutorial.</Details>
-        </Plugin>
+  <Plugin>
+    <ShortDescription>Hadoop incompatibility detector</ShortDescription>
+    <Details>Provides a detector for usage of classes that have changed incompatibly
+      between Hadoop releases.
+    </Details>
+  </Plugin>
 
-        <Detector class="com.tom_e_white.Detector">
-                <Details>
-                        Finds instances of BigDecimals being created
-                        with doubles.
-                </Details>
+  <Detector
+      class="com.tom_e_white.hadoop_incompatibility_findbugs_detector.FindHadoopIncompatibleClassChange">
+    <Details>
+      Finds method invocations on Hadoop classes that have (incompatibly) changed to
+      interfaces between Hadoop versions 1 and 2.
+    </Details>
 
-        </Detector>
+  </Detector>
 
-        <BugPattern type="HADOOP_COMPATIBILITY_BUG">
-                <ShortDescription>Hadoop bug</ShortDescription>
-                <LongDescription>Hadoop bug</LongDescription>
-                <Details>
-<![CDATA[
-<p>Due to the way double-precision floating point values are represented in Java, creating a new BigDecimal from a double is unreliable and may produce surprising results.</p>
+  <BugPattern type="HADOOP_CLASS_CHANGE_INCOMPATIBILITY_BUG">
+    <ShortDescription>Found method invocation on incompatible Hadoop class.
+    </ShortDescription>
+    <LongDescription>Found method invocation on incompatible Hadoop class {2}
+     in {1}.</LongDescription>
+    <Details>
+      <![CDATA[
+<p>Between Hadoop versions 1 and 2, some classes in the "new" MapReduce package were
+changed in an incompatible way from classes to interfaces. The classes affected include
+the context classes
+<code>JobContext</code>, <code>TaskAttemptContext</code>, <code>TaskInputOutputContext</code>,
+<code>MapContext</code> and <code>ReduceContext</code>, as well as the counter classes
+<code>Counter</code> and <code>CounterGroup</code>, all of which are in the
+<code>org.apache.hadoop.mapreduce</code> package.
+See <a href="https://issues.apache.org/jira/browse/MAPREDUCE-954">MAPREDUCE-954</a> and
+<a href="https://issues.apache.org/jira/browse/MAPREDUCE-901">MAPREDUCE-901</a> for
+more background. Libraries that should work with both Hadoop 1 and 2 without
+recompilation should avoid direct method calls on instances of these classes.</p>
 ]]>
-                </Details>
-        </BugPattern>
+    </Details>
+  </BugPattern>
 
-        <BugCode abbrev="HCB">Hadoop</BugCode>
+  <BugCode abbrev="HIB">Method invocation on incompatible Hadoop class.</BugCode>
 </MessageCollection>
