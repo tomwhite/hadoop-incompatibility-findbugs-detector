@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class FindHadoopIncompatibleClassChange extends OpcodeStackDetector {
-  private List<String> INCOMPATIBLE_CLASSES = Arrays.asList(new String[] {
+  private static final List<String> INCOMPATIBLE_CLASSES = Arrays.asList(new String[] {
       // Classes changed to interfaces in https://issues.apache.org/jira/browse/MAPREDUCE-954
       "org/apache/hadoop/mapreduce/JobContext",
       "org/apache/hadoop/mapreduce/TaskAttemptContext",
