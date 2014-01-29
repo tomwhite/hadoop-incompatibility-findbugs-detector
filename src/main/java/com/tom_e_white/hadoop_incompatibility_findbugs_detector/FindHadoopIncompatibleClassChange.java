@@ -34,6 +34,7 @@ public class FindHadoopIncompatibleClassChange extends OpcodeStackDetector {
           NORMAL_PRIORITY)
           .addClassAndMethod(this)
           .addString(getDottedClassConstantOperand())
+          .addString(getXMethodOperand().getName())
           .addSourceLine(this));
     }
   }

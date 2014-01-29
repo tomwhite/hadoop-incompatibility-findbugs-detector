@@ -21,7 +21,7 @@
   <BugPattern type="HADOOP_CLASS_CHANGE_INCOMPATIBILITY_BUG">
     <ShortDescription>Found method invocation on incompatible Hadoop class.
     </ShortDescription>
-    <LongDescription>Found method invocation on incompatible Hadoop class {2}
+    <LongDescription>Found method invocation {3}() on incompatible Hadoop class {2}
      in {1}.</LongDescription>
     <Details>
       <![CDATA[
